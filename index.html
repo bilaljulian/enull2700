@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div with Buttons</title>
+    <style>
+        .bg-crv {
+            width: 1073.6px;
+            height: 616.6px;
+            background-color: #f0f0f0; /* Background color */
+            border-radius: 10px; /* Optional: Add rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+            margin: 20px; /* Optional: Add margin */
+            padding: 20px; /* Optional: Add padding */
+            position: relative; /* Ensure buttons are positioned relative to this div */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px; /* Space between buttons and content */
+        }
+
+        .button, .logout-button, .post-ad-link {
+            width: 182px;
+            height: 25px;
+            background-color: #007bff; /* Button color */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            line-height: 25px; /* Center text vertically */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            text-decoration: none; /* Remove underline from link */
+        }
+
+        .button:hover, .logout-button:hover, .post-ad-link:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+
+        .message {
+            display: none; /* Hidden by default */
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .form-container input[type="text"], .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .sign-in-button {
+            width: 220px;
+            height: 40px;
+            background-color: #28a745; /* Green color for sign-in button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px; /* Center text vertically */
+            margin-top: 10px;
+        }
+
+        .sign-in-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .settings-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .settings-container input[type="text"], .settings-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .settings-container label {
+            font-weight: bold;
+        }
+
+        .change-password-button {
+            width: 220px;
+            height: 40px;
+            background-color: #007bff; /* Blue color for change password button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px; /* Center text vertically */
+            margin-top: 20px; /* Space above the button */
+        }
+
+        .change-password-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .search-alerts-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .search-alerts-container input[type="text"], .search-alerts-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-alerts-container button {
+            width: 220px;
+            height: 40px;
+            background-color: #007bff; /* Blue color for buttons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px; /* Center text vertically */
+            margin-top: 10px; /* Space above the button */
+        }
+
+        .search-alerts-container button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .categories-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .categories-container .category {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .categories-container .category img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-crv">
+        <div class="button-container">
+            <button class="button" onclick="showForm('Your Ads')">Your Ads</button>
+            <button class="button" onclick="showSettings()">Your Settings</button>
+            <button class="button" onclick="showSearchAlerts()">Your Search Alerts</button>
+            <a href="https://enull2500.vercel.app/" class="logout-button">Logout</a>
+            <a href="https://enull2600.vercel.app/" class="post-ad-link">Post Ad</a>
+        </div>
+        <div id="message" class="message"></div>
+        <div id="form-container" class="form-container">
+            <input type="text" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button class="sign-in-button" id="sign-in-button" onclick="signIn()">Sign In</button>
+        </div>
+        <div id="settings-container" class="settings-container">
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" value="91387" readonly>
+            
+            <label for="city">City</label>
+            <input type="text" id="city" value="Fair Oaks Ranch" readonly>
+            
+            <label for="name">Name</label>
+            <input type="text" id="name" value="bilal blakemore" readonly>
+            
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" value="+1 (661) - 305 - 8627" readonly>
+            
+            <label for="new-password">New password *</label>
+            <input type="password" id="new-password" placeholder="At least 6 characters">
+            
+            <label for="retype-password">Retype password *</label>
+            <input type="password" id="retype-password">
+            
+            <button class="change-password-button" onclick="changePassword()">Change Password</button>
+        </div>
+        <div id="search-alerts-container" class="search-alerts-container">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="Search description">
+
+            <button onclick="addSearch()">Add Search</button>
+            <button onclick="deleteSearch()">Delete Search</button>
+            <button onclick="reviewSearch()">Review Search</button>
+            <button onclick="showReceivedEmails()">Received Emails</button>
+        </div>
+        <div id="categories-container" class="categories-container">
+            <div class="category">
+                <img src="https://emoji-example.com/antique.png" alt="Antique">
+                <span>Antiques</span>
+            </div>
+            <div class="category">
+                <img src="https://emoji-example.com/coin.png" alt="Coins">
+                <span>Coins</span>
+            </div>
+            <div class="category">
+                <img src="https://emoji-example.com/stamp.png" alt="Stamps">
+                <span>Stamps</span>
+            </div>
+            <div class="category">
+                <img src="https://emoji-example.com/collectibles.png" alt="Collectibles">
+                <span>Collectibles</span>
+            </div>
+            <div class="category">
+                <img src="https://emoji-example.com/vintage.png" alt="Vintage">
+                <span>Vintage</span>
+            </div>
+            <!-- Add more categories as needed -->
+        </div>
+    </div>
+
+    <script>
+        function showForm(formType) {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('settings-container').style.display = 'none';
+            document.getElementById('search-alerts-container').style.display = 'none';
+            document.getElementById('categories-container').style.display = 'none';
+        }
+
+        function showSettings() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('settings-container').style.display = 'block';
+            document.getElementById('search-alerts-container').style.display = 'none';
+            document.getElementById('categories-container').style.display = 'none';
+        }
+
+        function showSearchAlerts() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('settings-container').style.display = 'none';
+            document.getElementById('search-alerts-container').style.display = 'block';
+            document.getElementById('categories-container').style.display = 'none';
+        }
+
+        function signIn() {
+            alert('Sign In clicked');
+        }
+
+        function changePassword() {
+            alert('Change Password clicked');
+        }
+
+        function addSearch() {
+            alert('Add Search clicked');
+        }
+
+        function deleteSearch() {
+            alert('Delete Search clicked');
+        }
+
+        function reviewSearch() {
+            alert('Review Search clicked');
+        }
+
+        function showReceivedEmails() {
+            alert('Received Emails clicked');
+        }
+    </script>
+</body>
+</html>
