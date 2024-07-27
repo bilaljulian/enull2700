@@ -240,50 +240,59 @@
     </div>
 
     <script>
-        function showForm(formType) {
+        function showForm(message) {
             document.getElementById('form-container').style.display = 'block';
             document.getElementById('settings-container').style.display = 'none';
             document.getElementById('search-alerts-container').style.display = 'none';
-            document.getElementById('categories-container').style.display = 'none';
-        }
-
-        function showSettings() {
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('settings-container').style.display = 'block';
-            document.getElementById('search-alerts-container').style.display = 'none';
-            document.getElementById('categories-container').style.display = 'none';
-        }
-
-        function showSearchAlerts() {
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('settings-container').style.display = 'none';
-            document.getElementById('search-alerts-container').style.display = 'block';
-            document.getElementById('categories-container').style.display = 'none';
+            document.getElementById('message').innerText = message;
+            document.getElementById('message').style.display = 'block';
         }
 
         function signIn() {
-            alert('Sign In clicked');
+            // Placeholder for sign-in functionality
+            alert("Signed in");
+        }
+
+        function showSettings() {
+            document.getElementById('settings-container').style.display = 'block';
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('search-alerts-container').style.display = 'none';
+            document.getElementById('message').innerText = 'Your Settings';
+            document.getElementById('message').style.display = 'block';
         }
 
         function changePassword() {
-            alert('Change Password clicked');
+            // Placeholder for change password functionality
+            alert("Password changed");
+        }
+
+        function showSearchAlerts() {
+            document.getElementById('search-alerts-container').style.display = 'block';
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('settings-container').style.display = 'none';
+            document.getElementById('message').innerText = 'Your Search Alerts';
+            document.getElementById('message').style.display = 'block';
         }
 
         function addSearch() {
-            alert('Add Search clicked');
+            // Placeholder for add search functionality
+            alert("Search added");
         }
 
         function deleteSearch() {
-            alert('Delete Search clicked');
+            // Placeholder for delete search functionality
+            alert("Search deleted");
         }
 
         function reviewSearch() {
-            alert('Review Search clicked');
+            // Placeholder for review search functionality
+            alert("Search reviewed");
         }
 
         function showReceivedEmails() {
-            alert('Received Emails clicked');
+            window.location.href = 'https://enull600.vercel.app/';
         }
     </script>
 </body>
 </html>
+
